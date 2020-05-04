@@ -2,7 +2,42 @@
 
 ---
 
+# 概要
+
+## pipenv系
+
+```bash
+# 初期化
+pipenv --three
+
+# パッケージインストール
+pipenv install パッケージ名
+pipenv install パッケージ名==バージョン
+
+# 開発環境のみの場合は以下
+pipenv install --dev パッケージ名
+
+# 脆弱性チェック
+pipenv check
+
+# 仮想環境に入る
+pipenv shell
+```
+
+## Django系
+
+### プロジェクト作成
+
+```bash
+django-admin startproject プロジェクト名
+```
+
+以下、公式に記載されている注意点。
+
+> 組み込みの Python モジュールや Django のコンポーネントの名前を使わないようにしてください。とりわけ、 django (Django 自体と名前が衝突します) や test (組み込みの Python パッケージ名と名前が衝突します) を使わないようにしましょう。
+
 # 参考資料
 
 - [Django ドキュメント / 2.2](https://docs.djangoproject.com/ja/2.2/)
+  - [チュートリアル](https://docs.djangoproject.com/ja/2.2/intro/tutorial01/)
 - [Qiita - PipenvでDjango開発環境をつくる](https://qiita.com/nochifuchi/items/4fe0164f0d8949cf11b7)
