@@ -8,6 +8,7 @@ black = "*"
 
 [packages]
 django = "==2.2.12"
+mysqlclient = "*"
 
 [requires]
 python_version = "3.7"
