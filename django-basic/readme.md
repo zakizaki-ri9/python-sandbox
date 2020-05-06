@@ -30,7 +30,7 @@ pipenv shell
 
 ```bash
 django-admin startproject プロジェクト名 ディレクトリ
-# django-admin startproject app .
+# django-admin startproject config .
 ```
 
 以下、公式に記載されている注意点。
