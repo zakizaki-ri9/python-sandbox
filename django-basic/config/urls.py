@@ -16,8 +16,9 @@ Including another URLconf
 from django.contrib import admin
 
 # パスコンバータ
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
+    path("polls/", include("polls.urls")),  # polls/urls.pyに移譲する
     path("admin/", admin.site.urls),
 ]
