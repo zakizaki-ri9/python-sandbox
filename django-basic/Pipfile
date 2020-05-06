@@ -8,7 +8,6 @@ black = "*"
 
 [packages]
 django = "==2.2.12"
-social-auth-app-django = "*"
 
 [requires]
 python_version = "3.7"
