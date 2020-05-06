@@ -29,12 +29,19 @@ pipenv shell
 ### プロジェクト作成
 
 ```bash
-django-admin startproject プロジェクト名
+django-admin startproject プロジェクト名 ディレクトリ
+# django-admin startproject app .
 ```
 
 以下、公式に記載されている注意点。
 
 > 組み込みの Python モジュールや Django のコンポーネントの名前を使わないようにしてください。とりわけ、 django (Django 自体と名前が衝突します) や test (組み込みの Python パッケージ名と名前が衝突します) を使わないようにしましょう。
+
+### 起動
+
+```bash
+python manage.py runserver
+```
 
 # 参考資料
 
