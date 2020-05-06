@@ -8,12 +8,15 @@ black = "*"
 
 [packages]
 django = "==2.2.12"
+social-auth-app-django = "*"
 
 [requires]
 python_version = "3.7"
 
 [scripts]
 start = "python manage.py runserver"
+migrate = "python manage.py migrate"
+lint = "black *.py **/" # "Error: Invalid value for '[SRC]...': Path '*.py **/' does not exist."が発生する
 
 [pipenv]
 allow_prereleases = true
