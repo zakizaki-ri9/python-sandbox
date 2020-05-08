@@ -1,9 +1,24 @@
 from django.http import HttpResponse
+from django.template import loader
+from django.shortcuts import render
 
+from .models import Question
 
 # 関数ベースの書き方
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    # 公開日時が最新である5件を取得
+    latest_question_list = Question.objects.order_by("-pub_date")[:5]
+
+    # テンプレートに渡す辞書型を生成
+    context = {
+        "latest_question_list": latest_question_list,
+    }
+
+    return render(request, "polls/index.html", context)
+
+    # 以下はショートカットrenderを使わないやり方
+    # template = loader.get_template("polls/index.html")
+    # return HttpResponse(template.render(context, request))
 
 
 def detail(request, question_id):
