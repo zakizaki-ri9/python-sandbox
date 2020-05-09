@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "django-rest-tutorial"
+version = "0.1.0"
+description = ""
+authors = ["zakizaki-ri9 <kic.yuuki@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+django = "^3.0.6"
+djangorestframework = "^3.11.0"
+pygments = "^2.6.1"
+
+[tool.poetry.dev-dependencies]
+black = "^19.10b0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
