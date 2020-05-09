@@ -2,8 +2,11 @@ from django.db import models
 from pygments.lexers import get_all_lexers
 from pygments.styles import get_all_styles
 
+# リスト内包表記でitem[1]がnullでないもののみを抽出している
 LEXERS = [item for item in get_all_lexers() if item[1]]
+# LEXERSから言語の大小文字を抽出し、昇順ソート
 LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
+# エディタ系を抽出し、昇順ソート
 STYLE_CHOICES = sorted([(item, item) for item in get_all_styles()])
 
 
