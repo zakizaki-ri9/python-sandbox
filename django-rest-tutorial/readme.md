@@ -2,6 +2,29 @@
 
 ---
 
+# コマンド
+
+```bash
+# 仮想環境に入る
+poetry shell
+```
+
+## 仮想環境
+
+```bash
+# フォーマット
+black .
+
+# 起動
+python manage.py runserver
+
+# デバッグ
+## snippets_list
+http http://127.0.0.1:8000/snippets/
+## snippets_detail
+http http://127.0.0.1:8000/snippets/1/
+```
+
 # メモ
 
 ## [シリアライザ](https://www.django-rest-framework.org/api-guide/serializers/)
