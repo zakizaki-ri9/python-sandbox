@@ -4,7 +4,7 @@ from rest_framework.parsers import JSONParser
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
 
-# お試しのため、CSRFトークンチェックを無効化
+# お試しのため、@csrf_exempt でCSRFトークンチェックを無効化
 @csrf_exempt
 def snippet_list(request):
     """
