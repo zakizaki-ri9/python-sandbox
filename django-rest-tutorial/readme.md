@@ -100,7 +100,7 @@ class SnippetList(APIView):
         # 処理
 ```
 
-### クラスベースAPIViewにおけるmixinsとGenerics
+## クラスベースAPIViewにおけるmixinsとGenerics
 
 - [Class-based Views](https://www.django-rest-framework.org/tutorial/3-class-based-views/)
 
@@ -144,6 +144,23 @@ class SnippetList(generics.ListCreateAPIView):
 class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
+```
+
+## マイグレーション
+
+### Null許容の外部キーを作成するパターン
+
+外部キーで紐づくレコードも合わせて削除したい。  
+が、Nullも許容したい（後から外部キーを追加する場合のイメージ）は、  
+`on_delete=models.CASCADE,null=True`を設定する。
+
+```python
+owner = models.ForeignKey(
+    "auth.User",
+    related_name="snippets",
+    on_delete=models.CASCADE,
+    null=True
+)
 ```
 
 # 参考記事
