@@ -146,6 +146,46 @@ class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = SnippetSerializer
 ```
 
+### GenericsAPIViewのフック
+
+`perfume_create`/`perfume_update`/`perfume_delete`を定義することで、  
+GenericsAPIView側でSelialiers経由の更新操作をフックできる。
+
+- [perfume_createの場合](https://github.com/encode/django-rest-framework/blob/acbd9d8222e763c7f9c7dc2de23c430c702e06d4/rest_framework/mixins.py#L23-L24)
+- [フックの仕組み](https://www.django-rest-framework.org/api-guide/generic-views/)
+  - `generics.〜APIView`は、`mixins.〜ModelMixin`を継承している
+  - `get`/`post`などのHTTPメソッドに応じた処理を実施している
+    - https://github.com/encode/django-rest-framework/blob/acbd9d8222e763c7f9c7dc2de23c430c702e06d4/rest_framework/generics.py#L184-L291
+
+## [Permissions](https://www.django-rest-framework.org/api-guide/permissions/)
+
+レコードの読み書き権限の仕組みが提供されている。  
+以下で素振りすることが可能。
+
+- [Authentication & Permissions](https://www.django-rest-framework.org/tutorial/4-authentication-and-permissions/)
+
+自分で制約を追加したい場合は、[Custom permissions](https://www.django-rest-framework.org/api-guide/permissions/#custom-permissions)の仕組みを使う。  
+以下実装例。
+
+```python
+from rest_framework import permissions
+
+
+class IsOwnerOrReadOnly(permissions.BasePermission):
+    """
+    Custom permission to only allow owners of an object to edit it.
+    """
+
+    def has_object_permission(self, request, view, obj):
+        # Read permissions are allowed to any request,
+        # so we'll always allow GET, HEAD or OPTIONS requests.
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        # Write permissions are only allowed to the owner of the snippet.
+        return obj.owner == request.user
+```
+
 ## マイグレーション
 
 ### Null許容の外部キーを作成するパターン

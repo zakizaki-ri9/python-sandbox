@@ -1,12 +1,13 @@
 # from rest_framework import status
 # from rest_framework.response import Response
 # from rest_framework.decorators import api_view
+# from rest_framework import mixins
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
-from rest_framework import mixins
-from rest_framework import generics
+from rest_framework import generics, permissions
 from django.contrib.auth.models import User
 from snippets.serializers import UserSerializer
+from snippets.permissions import IsOwnerOrReadOnly
 
 
 class UserList(generics.ListAPIView):
@@ -19,36 +20,23 @@ class UserDetail(generics.RetrieveAPIView):
     serializer_class = UserSerializer
 
 
-class SnippetList(
-    mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView
-):
+class SnippetList(generics.ListCreateAPIView):
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
 
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
+    # 認証されたリクエストには読み書きのアクセスを、認証されていないリクエストには読み取り専用のアクセスの権限
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
-class SnippetDetail(
-    mixins.RetrieveModelMixin,
-    mixins.UpdateModelMixin,
-    mixins.DestroyModelMixin,
-    generics.GenericAPIView,
-):
+class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
 
-    def get(self, request, *args, **kwargs):
-        return self.retrieve(request, *args, **kwargs)
-
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
+    # 認証されたリクエストには読み書きのアクセスを、認証されていないリクエストには読み取り専用のアクセスの権限
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
 
 # # お試しのため、@csrf_exempt でCSRFトークンチェックを無効化
