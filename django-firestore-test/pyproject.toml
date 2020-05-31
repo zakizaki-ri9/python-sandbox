@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "django-test"
+name = "django-firestore-test"
 version = "0.1.0"
 description = ""
 authors = ["zakizaki-ri9 <kic.yuuki@gmail.com>"]
