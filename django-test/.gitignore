@@ -123,3 +123,4 @@ dmypy.json
 
 .venv
 .vscode
+.tmp
