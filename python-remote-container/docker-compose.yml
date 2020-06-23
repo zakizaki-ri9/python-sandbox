@@ -1,0 +1,7 @@
+version: '3'
+services:
+  python_remote:
+    build: .
+    tty: true
+    volumes:
+      - .:/code

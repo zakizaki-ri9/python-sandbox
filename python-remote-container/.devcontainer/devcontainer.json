@@ -1,0 +1,24 @@
+{
+	"name": "Python Remote Container Sample",
+	"dockerComposeFile": ["../docker-compose.yml"],
+	"service": "python_remote",
+	"workspaceFolder": "/code",
+	"extensions": [
+		"ms-python.python",
+		"atisteo.vscode-django",
+		"bibhasdn.django-snippets",
+		"bibhasdn.django-html",
+		"editorconfig.editorconfig",
+		"donjayamanne.githistory",
+		"eamodio.gitlens"
+	],
+	"settings": {
+		"python.pythonPath": "/usr/local/bin/python",
+		"[python]": {
+			"editor.formatOnSave": true
+		},
+		"python.formatting.provider": "black",
+		"python.linting.pylintEnabled": true,
+		"python.linting.enabled": true
+	}
+}
