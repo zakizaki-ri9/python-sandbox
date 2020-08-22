@@ -2,6 +2,7 @@
 	"name": "Python Remote Container Sample",
 	"dockerComposeFile": ["../docker-compose.yml"],
 	"service": "python_remote",
+	"postCreateCommand": "apt-get update && apt-get install -y git",
 	"workspaceFolder": "/code",
 	"extensions": [
 		"ms-python.python",
