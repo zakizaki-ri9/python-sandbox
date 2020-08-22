@@ -16,7 +16,8 @@
 	"settings": {
 		"python.pythonPath": "/usr/local/bin/python",
 		"[python]": {
-			"editor.formatOnSave": true
+			"editor.formatOnSave": true,
+			"editor.tabSize": 4
 		},
 		"python.formatting.provider": "black",
 		"python.linting.pylintEnabled": true,
