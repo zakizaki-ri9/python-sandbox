@@ -8,12 +8,12 @@ assert a[5:] == a[5 : len(a)]
 
 # スライスした部分に挿入される
 print("Before ", a)
-a[2:7] = [99, 22, 14]
+a[2:7] = [99, 22, 14]  # type: ignore
 print("After ", a)
 
 # 代入するリストがスライスより長いと、リストも長くなる
 print("Before ", a)
-a[2:3] = [47, 11]
+a[2:3] = [47, 11]  # type: ignore
 print("After ", a)
 
 # スライスの複製となる
@@ -24,8 +24,7 @@ assert b == a and b is not a
 b = a
 print("Before a", a)
 print("Before b", b)
-a[:] = [101, 102, 103]
+a[:] = [101, 102, 103]  # type: ignore
 assert a is b
 print("After a ", a)
 print("After b ", b)
-

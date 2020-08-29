@@ -1,7 +1,7 @@
 from typing import List
 
 
-def get_stats(numbers: List[int]) -> (int, int, int, int, int):
+def get_stats(numbers: List[int]) -> (int, int, int, int, int):  # type: ignore
     minimum = min(numbers)
     maximum = max(numbers)
     return minimum, maximum, len(numbers), numbers[0], numbers[-1]

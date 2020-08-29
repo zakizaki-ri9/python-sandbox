@@ -6,12 +6,8 @@
 	"workspaceFolder": "/code",
 	"extensions": [
 		"ms-python.python",
-		"atisteo.vscode-django",
-		"bibhasdn.django-snippets",
-		"bibhasdn.django-html",
+		"ms-python.vscode-pylance",
 		"editorconfig.editorconfig",
-		"donjayamanne.githistory",
-		"eamodio.gitlens"
 	],
 	"settings": {
 		"python.pythonPath": "/usr/local/bin/python",
@@ -21,6 +17,8 @@
 		},
 		"python.formatting.provider": "black",
 		"python.linting.pylintEnabled": true,
-		"python.linting.enabled": true
+		"python.linting.mypyEnabled": true,
+		"python.linting.enabled": true,
+		"python.languageServer": "Pylance",
 	}
 }

@@ -4,7 +4,7 @@ from typing import List
 def sort_priority(values: List[int], group: set) -> bool:
     found = False
 
-    def helper(x: int) -> (int, int):
+    def helper(x: int) -> (int, int):  # type: ignore
         nonlocal found  # nonlocalを宣言することで、クロージャ内のfoundが、helper以外で定義された変数と認識する
         print(f"x: {x}")
         if x in group:
